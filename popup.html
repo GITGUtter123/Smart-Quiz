@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz Generator</title>
+  <script src="popup.js" defer></script>
+</head>
+<body>
+  <h1>Generated Quiz</h1>
+  <div id="quizContainer"></div>
+</body>
+</html>
+
+// popup.js
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.action === "textSelected") {
+    const quizContainer = document.getElementById("quizContainer");
+    quizContainer.innerHTML = `<p><strong>Question:</strong> ${message.text}?</p>`;
+  }
+});
